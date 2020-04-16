@@ -1,4 +1,4 @@
 [
-    { "flightId": "Al-202", "origin": "Pune", "dest": "Delhi", "date":"01-May-2020" , "cost": 90, "depTime": "10:00AM", "arrTime": "12:00PM"},
-    { "flightId": "Al-203", "origin": "Delhi", "dest": "Pune", "date":"10-May-2020" , "cost": 110, "depTime": "08:00AM", "arrTime": "11:00PM"}
+    { "flightId": "Al-202", "origin": "Pune", "dest": "Delhi", "date":"2020-05-01" , "cost": 90, "depTime": "10:00AM", "arrTime": "12:00PM"},
+    { "flightId": "Al-203", "origin": "Delhi", "dest": "Pune", "date":"2020-02-10" , "cost": 110, "depTime": "08:00AM", "arrTime": "11:00PM"}
 ]
