@@ -60,6 +60,7 @@ export class Form extends Component {
                             onChange={this.props.onChange}
                         />
                     </div>
+                    <br/>
                     <button type="submit" className="btn btn-primary">Search</button>
                 </form>
         )
