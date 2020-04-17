@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
 import Header from './components/layout/Header';
 import Search from './components/Search';
 import Results from './components/Results';
@@ -15,19 +16,38 @@ class App extends Component {
     isReturn: false,
     route: '', 
     upDepDate: '',
-    upRetDate: ''
+    upRetDate: '',
+    flights: []
   }
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   onSubmit = (e) => {
       e.preventDefault();
-      this.resultHeading();
+      this.updateResultHeading();
+
+      this.setState({ isLoading: true });
+      axios.get('flights.json')
+      .then(result => 
+          this.setState({
+              flights: result.data,
+              isLoading: false
+          }, () => 
+            this.setState({ flights: [...this.state.flights.filter(flight => flight.origin === this.state.origin &&
+              flight.dest === this.state.dest && flight.date === this.state.depDate)] }, () => console.log(this.state.flights))
+          )
+      )
+      .catch(error => 
+          this.setState({
+              error,
+              isLoading: false
+          })
+      );
   }
 
   onSelect = (e) => this.setState({ isReturn: e==="return" });
 
-  resultHeading = () => {
+  updateResultHeading = () => {
     var updatedRoute = this.state.origin + '>' + this.state.dest;
     this.setState({ route: this.state.isReturn ? updatedRoute + '>' + this.state.origin : updatedRoute });
 
@@ -48,6 +68,10 @@ class App extends Component {
           route={this.state.route} 
           depDate={this.state.upDepDate}
           retDate={this.state.upRetDate}
+        />
+        <Results
+          isLoading={this.state.isLoading}
+          error={this.state.error}
         />
       </div>
     );

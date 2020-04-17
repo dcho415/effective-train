@@ -22,7 +22,7 @@ export class Form extends Component {
 
     render() {
         return (
-            <form onSubmit={this.props.onSubmit} style={{ padding: '20px' }}> 
+            <form id='myForm' onSubmit={this.props.onSubmit} style={{ padding: '20px' }}> 
                     <div>
                         <input 
                             type="text" 
