@@ -19,7 +19,8 @@ class App extends Component {
     upRetDate: '',
     depFlights: [],
     retFlights: [],
-    setPassengers: 0
+    setPassengers: 0,
+    costMax: 100000
   }
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -74,6 +75,7 @@ class App extends Component {
           onChange={this.onChange} 
           onSubmit={this.onSubmit} 
           onSelect={this.onSelect} 
+          costMax={this.state.costMax}
         />
         <ResultsHeading 
           route={this.state.route} 
@@ -86,6 +88,7 @@ class App extends Component {
           depFlights={this.state.depFlights}
           retFlights={this.state.retFlights}
           passengers={this.state.setPassengers}
+          costMax={this.state.costMax}
         />
       </div>
     );
