@@ -11,7 +11,8 @@ export class Form extends Component {
                         type="date"
                         name="retDate"
                         className="form-control"
-                        onChange={this.props.onChange}       
+                        onChange={this.props.onChange}    
+                        required   
                     />
                 </div>
             );
@@ -30,6 +31,7 @@ export class Form extends Component {
                             placeholder="Enter Origin City"
                             className="form-control"
                             onChange={this.props.onChange} 
+                            required
                         />
                     </div>
                     <div>
@@ -39,6 +41,7 @@ export class Form extends Component {
                             placeholder="Enter Destination City"
                             className="form-control"
                             onChange={this.props.onChange} 
+                            required
                         />
                     </div>
                     <div>
@@ -47,7 +50,8 @@ export class Form extends Component {
                             type="date"
                             name="depDate"
                             className="form-control"  
-                            onChange={this.props.onChange}    
+                            onChange={this.props.onChange}
+                            required
                         />
                     </div>
                     { this.isOneWay(this.props.isReturn) }
@@ -58,6 +62,9 @@ export class Form extends Component {
                             name="passengers"
                             className="form-control"
                             onChange={this.props.onChange}
+                            min='1'
+                            defaultValue='1'
+                            required
                         />
                     </div>
                     <br/>

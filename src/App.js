@@ -23,7 +23,9 @@ class App extends Component {
     costMax: 100000
   }
 
-  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+  onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
   onSubmit = (e) => {
       e.preventDefault();
