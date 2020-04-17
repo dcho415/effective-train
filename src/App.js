@@ -12,13 +12,14 @@ class App extends Component {
     dest: '',
     depDate: '',
     retDate: '',
-    passengers: '', 
+    passengers: 0, 
     isReturn: false,
     route: '', 
     upDepDate: '',
     upRetDate: '',
-    depFlights: '',
-    retFlights: ''
+    depFlights: [],
+    retFlights: [],
+    setPassengers: 0
   }
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -62,6 +63,7 @@ class App extends Component {
 
     this.setState({ upDepDate: "Depart : " + this.state.depDate});
     this.setState({ upRetDate: this.state.isReturn ? "Return : " + this.state.retDate : '' })
+    this.setState({ setPassengers: this.state.passengers})
   }
 
   render() {
@@ -83,7 +85,7 @@ class App extends Component {
           error={this.state.error}
           depFlights={this.state.depFlights}
           retFlights={this.state.retFlights}
-          passengers={this.state.passengers}
+          passengers={this.state.setPassengers}
         />
       </div>
     );

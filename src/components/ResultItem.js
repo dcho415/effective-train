@@ -5,21 +5,21 @@ export default class ResultItem extends Component {
         return (
             <div style={divStyle}>
                 <div>
-                    <h2>NZD100</h2>
+                    <h2>{this.props.cost}</h2>
                 </div>
                 <div style={{width: '50%', float: 'left'}}>
-                    Al-202
-                    <h5>PNQ>DEL</h5>
-                    <h6>Depart: 10:00 AM</h6>
-                    <h6>Arrive: 12:00 PM</h6>
+                    {this.props.flightId}
+                    <h5>{this.props.route}</h5>
+                    <h6>{this.props.depTime}</h6>
+                    <h6>{this.props.arrTime}</h6>
                 </div>
                 <div style={{width: '50%', float: 'right'}}>
-                    Al-203
-                    <h5>DEL>PNQ</h5>
-                    <h6>Depart: 08:00 PM</h6>
-                    <h6>Arrive: 11:00 PM</h6>
+                    {this.props.retFlightId}
+                    <h5>{this.props.retRoute}</h5>
+                    <h6>{this.props.retDepTime}</h6>
+                    <h6>{this.props.retArrTime}</h6>
                 </div>
-                <button className="btn btn-primary">Book Flight</button>
+                <button style = {{width: '100%'}} className="btn btn-primary">Book Flight</button>
             </div>
         )
     }

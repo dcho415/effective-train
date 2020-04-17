@@ -7,16 +7,36 @@ export default class Results extends Component {
             return "Loading..."
         }
         if(this.props.error) {
-            return <p>{this.state.error.message}</p>
+            return <p>{this.props.error.message}</p>
         } else {
-            return (
-                <React.Fragment>
-                    <ResultItem />
-                    <ResultItem />
-                    <ResultItem />
-                </React.Fragment>
-                
-            );
+            return this.props.retFlights && this.props.retFlights.length > 0 ? 
+                this.props.depFlights.map((flight) => (
+                    this.props.retFlights.map((retFlight) => (
+                        <ResultItem 
+                            key={flight.flightId + retFlight.flightId} 
+                            flightId={flight.flightId}
+                            retFlightId={retFlight.flightId}
+                            route={flight.origin + ">" + flight.dest}
+                            retRoute={retFlight.origin + ">" + retFlight.dest}
+                            depTime={"Depart: " + flight.depTime}
+                            arrTime={"Arrive: "+ flight.arrTime}
+                            retDepTime={"Depart: " + retFlight.depTime}
+                            retArrTime={"Arrive: "+ retFlight.arrTime}
+                            cost={"NZD" + (this.props.passengers * (flight.cost + retFlight.cost))}
+                        />  
+                    ))
+                ))
+                :
+                this.props.depFlights.map((flight) => (
+                    <ResultItem 
+                        key={flight.flightId} 
+                        flightId={flight.flightId}
+                        route={flight.origin + ">" + flight.dest}
+                        depTime={"Depart: " + flight.depTime}
+                        arrTime={"Arrive: "+ flight.arrTime}
+                        cost={"NZD" + (this.props.passengers * flight.cost)}
+                    />  
+                ))
         };
     }
 }
