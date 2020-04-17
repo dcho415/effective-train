@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ResultItem from './ResultItem';
 
 export default class Results extends Component {
     render() {
@@ -7,7 +8,15 @@ export default class Results extends Component {
         }
         if(this.props.error) {
             return <p>{this.state.error.message}</p>
-        }
-        return '';
+        } else {
+            return (
+                <React.Fragment>
+                    <ResultItem />
+                    <ResultItem />
+                    <ResultItem />
+                </React.Fragment>
+                
+            );
+        };
     }
 }

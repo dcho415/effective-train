@@ -17,7 +17,8 @@ class App extends Component {
     route: '', 
     upDepDate: '',
     upRetDate: '',
-    flights: []
+    depFlights: '',
+    retFlights: ''
   }
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -32,9 +33,17 @@ class App extends Component {
           this.setState({
               flights: result.data,
               isLoading: false
-          }, () => 
-            this.setState({ flights: [...this.state.flights.filter(flight => flight.origin === this.state.origin &&
-              flight.dest === this.state.dest && flight.date === this.state.depDate)] }, () => console.log(this.state.flights))
+          }, () => {
+              this.setState({ depFlights: [...this.state.flights.filter(flight => flight.origin === this.state.origin &&
+              flight.dest === this.state.dest && flight.date === this.state.depDate)] }, () => console.log(this.state.depFlights))
+
+              if (this.state.isReturn) {
+                this.setState({ retFlights: [...this.state.flights.filter(flight => flight.origin === this.state.dest &&
+                flight.dest === this.state.origin && flight.date === this.state.retDate)] }, () => console.log(this.state.retFlights))
+              } else {
+                this.setState({ retFlights: [] }, () => console.log(this.state.retFlights))
+              }
+            }
           )
       )
       .catch(error => 
@@ -72,6 +81,9 @@ class App extends Component {
         <Results
           isLoading={this.state.isLoading}
           error={this.state.error}
+          depFlights={this.state.depFlights}
+          retFlights={this.state.retFlights}
+          passengers={this.state.passengers}
         />
       </div>
     );
