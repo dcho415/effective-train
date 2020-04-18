@@ -23,9 +23,9 @@ export default class Search extends Component {
                         name="costMax"
                         type="range" 
                         min="0" 
-                        max="100000"
+                        max="5000"
                         onChange={this.props.onChange} 
-                        defaultValue="100000"
+                        defaultValue="5000"
                     />
                     {"NZD" + this.props.costMax}
                 </div>

@@ -20,7 +20,7 @@ class App extends Component {
     depFlights: [],
     retFlights: [],
     setPassengers: 0,
-    costMax: 100000
+    costMax: 5000
   }
 
   onChange = (e) => {
@@ -39,11 +39,11 @@ class App extends Component {
               isLoading: false
           }, () => {
               this.setState({ depFlights: [...this.state.flights.filter(flight => flight.origin === this.state.origin &&
-              flight.dest === this.state.dest && flight.date === this.state.depDate)] }, () => console.log(this.state.depFlights))
+              flight.dest === this.state.dest && flight.date === this.state.depDate)] })
 
               if (this.state.isReturn) {
                 this.setState({ retFlights: [...this.state.flights.filter(flight => flight.origin === this.state.dest &&
-                flight.dest === this.state.origin && flight.date === this.state.retDate)] }, () => console.log(this.state.retFlights))
+                flight.dest === this.state.origin && flight.date === this.state.retDate)] })
               } else {
                 this.setState({ retFlights: [] }, () => console.log(this.state.retFlights))
               }
